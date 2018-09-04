@@ -3,6 +3,7 @@ package h05;
 import java.awt.*;
 import java.applet.*;
 
+// DIT IS OPDRACHT 5.1
 
 public class PraktijkopdrachtNieuw extends Applet {
 
