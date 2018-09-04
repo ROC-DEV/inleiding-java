@@ -3,6 +3,8 @@ package h04;
 import java.awt.*;
 import java.applet.*;
 
+// DIT IS OPDRACHT 4.5
+
 
 public class Ellips extends Applet {
 

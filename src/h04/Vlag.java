@@ -4,6 +4,8 @@ package h04;
 import java.awt.*;
 import java.applet.*;
 
+// DIT IS OPDRACHT 4.3
+
 public class Vlag extends Applet {
 
     public void init() {
