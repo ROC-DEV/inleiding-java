@@ -5,8 +5,8 @@ import java.applet.*;
 
 public class Verdeling extends Applet {
 
-    int verdiend;
-    int verdeling;
+    double verdiend;
+    double verdeling;
 
 // DIT IS OPDRACHT 6.1
 
