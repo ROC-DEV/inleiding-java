@@ -35,7 +35,7 @@ public class Tekstvak extends Applet {
 class ResetListener implements ActionListener	{
         public void actionPerformed( ActionEvent e ) {
             tekstvak.setText("");
-            s = tekstvak.getText();
+           s = "";
             repaint();
         }}
 

@@ -11,7 +11,7 @@ public class Fibonacci extends Applet {
     int y = 20;
 
     public void paint(Graphics g) {
-        int f = 0;
+        int f =  0;
         int f1 = 0;
         int f2 = 1;
 

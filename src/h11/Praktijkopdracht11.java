@@ -17,25 +17,25 @@ int getal;
 
 
         tekstvak = new TextField("", 20);
-tekstvak.addActionListener(new TekstvakListener());
-add(tekstvak);
+        tekstvak.addActionListener(new TekstvakListener());
+        add(tekstvak);
 
 
     }
 
     public void paint(Graphics g) {
 
-        g.drawString("" + tekst, 50, 80 );
+        //g.drawString("" + tekst, 50, 80 );
 
         int teller;
-        int y = 20;
+        int y = 40;
 
         int getal = 0;
 
         for(teller = 0; teller < 10; teller++) {
             y += 20;
             getal += 1;
-            g.drawString(tekst + "*" + getal + "=" + (getal*tekst) , 50, y);
+            g.drawString(getal + " * " + tekst + " = " + (getal*tekst) , 120, y);
         }}
 
     class TekstvakListener implements ActionListener {
@@ -44,62 +44,9 @@ add(tekstvak);
             s = tekstvak.getText();
             getal = Integer.parseInt(s);
 
-            switch(getal) {
-                case 1:
-                    tekst = 1;
-                    break;
-                case 2:
-                    tekst = 2;
-                    break;
-                case 3:
-                    tekst = 3;
-                    break;
-                case 4:
-                    tekst = 4;
-                    break;
-                case 5:
-                    tekst = 5;
-                    break;
-                case 6:
-                    tekst = 6;
-                    break;
-                case 7:
-                    tekst = 7;
-                    break;
-                case 8:
-                    tekst = 8;
-                    break;
-                case 9:
-                    tekst = 9;
-                    break;
-                case 10:
-                    tekst = 10;
-                    break;
-                default:
-                    tekst = 0;
-                    break;
-            }
-                    repaint();
-            }}}
+            tekst = getal;
 
+            repaint();
 
-  /*  public void paint(Graphics g) {
-
-        g.drawString("" + tekst, 50, 80 );
-
-        int teller;
-        int y = 20;
-
-        int getal = 0;
-
-        for(teller = 0; teller < 10; teller++) {
-            y += 20;
-            getal += 1;
-            g.drawString(tekst + "*" + getal + "=" + (getal*tekst) , 20, y);
-        }
-    }
-}}
-
-
- */
+        }}}
 
