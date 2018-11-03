@@ -1,43 +1,31 @@
 package h12;
 
-import java.applet.Applet;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-
-
+import java.applet.*;
 
 public class test extends Applet {
-
-    TextField[] tekstvelden;
-    int[] getallen;
-    Button ok;
+    boolean gevonden;
+    double[] salaris = { 100.0, 200.0, 500.0, 400.0, 300.0 };
+    double gezocht;
 
     public void init() {
-
-        getallen = new int[5];
-        tekstvelden = new TextField[5];
-
-        for (int i = 0; i < tekstvelden.length; i++) {
-            tekstvelden[i] = new TextField("", 5);
-            add(tekstvelden[i]);
-        }
-        ok = new Button("Oké");
-        ok.addActionListener(new Listener());
-        add(ok);
-    }
-
-    class Listener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < getallen.length; i++) {
-                getallen[i] = Integer.parseInt(tekstvelden[i].getText());
+        gezocht = 450;
+        gevonden = false;
+        int teller = 0;
+        while(teller < salaris.length) {
+            if(salaris[teller] == gezocht) {
+                gevonden = true;
             }
-            Arrays.sort(getallen);
-            for (int i = 0; i < getallen.length; i++) {
-                tekstvelden[i].setText("" + getallen[i]);
-            }
+            teller ++;
         }
     }
 
+    public void paint(Graphics g) {
+        if(gevonden == true) {
+            g.drawString("De waarde is gevonden.", 20, 50);
+        }
+        else {
+            g.drawString("De waarde is niet gevonden.", 20, 50);
+        }
+    }
 }
