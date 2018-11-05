@@ -1,70 +1,57 @@
 package h12;
 
-
 import java.awt.*;
 import java.applet.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-
+import java.awt.event.*;
 
 public class H12Opdracht4 extends Applet {
-    boolean gevonden;
+    double[] salaris = {100.0, 200.0, 300.0, 400.0, 500.0};
+    double gezocht;
     TextField tekstvak;
     Button knop;
-    int[] salaris = {0, 100, 200, 300, 400, 500};
-    int hoogte;
-    String T;
-    String F;
-
-
+    int hoogte = 50;
+    int gevondenID;
+    boolean gevonden;
 
     public void init() {
-        tekstvak = new TextField("", 20);
+        tekstvak = new TextField("", 21);
         knop = new Button("OK");
         knop.addActionListener(new KnopListener());
-
         add(tekstvak);
         add(knop);
     }
-
-
     public void paint(Graphics g) {
-
-
         int teller = 0;
         while (teller < salaris.length) {
-            g.drawString("" + salaris[teller], 50, hoogte);
+            g.drawString("" + salaris[teller], 10, hoogte);
             teller++;
-            hoogte += 20;
+            hoogte += 30;
         }
+        if (gevonden == true) {
+            g.drawString("het getal is gevonden op index : " + gevondenID, 96, 40);
 
-
-        g.drawString("" + T ,120, 120);
-        g.drawString("" + F, 120, 120);
-
+        } else if (gevonden == false) {
+            g.drawString("Het getal is niet gevonden", 96, 40);
+        }
+        hoogte = 50;
     }
 
     class KnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if (gevonden == true) {
-             T = ("De waarde is gevonden.");
-
-            } else {
-                F = ("De waarde is niet gevonden");
+            gezocht = Double.parseDouble(tekstvak.getText());
+            gevonden = false;
+            int teller = 0;
+            while (teller < salaris.length) {
+                if (salaris[teller] == gezocht) {
+                    gevonden = true;
+                    gevondenID = teller++;
+                }
+                teller++;
             }
-
-repaint();
+            repaint();
         }
-
     }
 }
-
-
-
-
-
-
 
 
 
