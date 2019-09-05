@@ -41,8 +41,16 @@ public class DrieKinderen extends JApplet {
 
         // Balks
         g.setColor(Color.GREEN);
-        g.drawRect(93,170,20,51);
-        g.fillRect(93,170,20,51);
+        g.drawRect(93,170,20,49);
+        g.fillRect(93,170,20,49);
+
+        g.setColor(Color.YELLOW);
+        g.drawRect(153,110,20,109);
+        g.fillRect(153,110,20,109);
+
+        g.setColor(Color.BLUE);
+        g.drawRect(213,130,20,89);
+        g.fillRect(213,130,20,89);
 
 
     }
