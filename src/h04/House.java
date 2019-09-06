@@ -11,7 +11,12 @@ public class House extends Applet {
     }
 
     public void paint (Graphics g) {
-        g.drawLine(20,75,20,250);
-        g.drawLine();
-    }
-}
+
+
+        g.drawRect(300, 300, 140, 140);
+        g.drawLine(300, 300, 370, 200);
+        g.drawLine(370, 200, 440, 300);
+        g.drawRect(310, 390, 25, 50);
+        g.drawRect(320, 330, 70,35);
+
+}}
