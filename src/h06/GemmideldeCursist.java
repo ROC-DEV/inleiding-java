@@ -2,6 +2,7 @@ package h06;
 
 import javax.swing.*;
 import java.awt.*;
+
 public class GemmideldeCursist extends JApplet {
 
     double getal01 = 5.9;
@@ -14,6 +15,7 @@ public class GemmideldeCursist extends JApplet {
     double gemmidelde04 = gemmidelde03 / 10;
 
     public void init() {
+
         System.out.printf("" + gemmidelde04);
         System.out.printf("" + gemmidelde);
 
