@@ -33,7 +33,7 @@ public class VierenGeldVerdelen extends JApplet {
     String naam = "Jan";
 
     public void init() {
-        AllesVerdiend = 113 / 4;
+        AllesVerdiend = 113.0 / 4;
     }
 
     public void paint(Graphics g) {
