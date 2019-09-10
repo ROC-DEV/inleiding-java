@@ -9,8 +9,6 @@ public class Tekst_OkKnop_ResetKnop extends Applet {
     Label label;
     Button okbutton;
     Button resetbutton;
-    Double getal;
-    String tekst;
     TextField geschreven;
     private boolean showText = false;
 
