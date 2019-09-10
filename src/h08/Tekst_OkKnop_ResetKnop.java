@@ -11,47 +11,48 @@ public class Tekst_OkKnop_ResetKnop extends Applet {
     Button resetbutton;
     Double getal;
     String tekst;
+    TextField geschreven;
     private boolean showText = false;
 
     public void init() {
         tekstvak = new TextField("", 20);
+        geschreven = new TextField("",20);
         label = new Label("Type");
-        okbutton = new Button("Ok");
-        resetbutton = new Button("Reset");
-        tekstvak.addActionListener(new TekstvakListener());
 
+        //Maak ok knop en koppel aan een event listener
+        okbutton = new Button("Ok");
+        OkKnopListener okKnopListener = new OkKnopListener();
+        okbutton.addActionListener(okKnopListener);
+
+        resetbutton = new Button("Reset");
+        ResetKnopListener resetKnopListener = new ResetKnopListener();
+        resetbutton.addActionListener(resetKnopListener);
+
+//Zet de knoppen op het scherm
         add(label);
         add(tekstvak);
         add(okbutton);
         add(resetbutton);
+        add(geschreven);
     }
 
-    public void paint(Graphics g) {
-        g.drawString("Dit heb je getypt" + tekst, 50, 60);
-    }
-
-    class TekstvakListener implements ActionListener {
+    //Eventhandler voor de ok knop
+    class OkKnopListener implements ActionListener
+    {
+        @Override
         public void actionPerformed(ActionEvent e) {
-            String s = tekstvak.getText();
-            getal = Double.parseDouble(s);
-            //Je kan deze regels ook samenvoegen
-            //getal = Double.parseDouble(tekstvak.getText());
-            repaint();
+            String geschrevenText;
+            geschrevenText = tekstvak.getText();
+            geschreven.setText(geschrevenText);
         }
     }
 
-    public void draw(Graphics g) {
-        if (showText) {
-            g.drawString("Hello", 0, 0);
-        }
-
-    }
-
-    public void actionPerformed(ActionEvent event) {
-        Object source = event.getSource();
-
-        if (source == okbutton) {
-            showText = true;
+    class ResetKnopListener implements  ActionListener
+    {
+        public void actionPerformed(ActionEvent e) {
+            tekstvak.setText("");
+            geschreven.setText("");
         }
     }
+
 }
