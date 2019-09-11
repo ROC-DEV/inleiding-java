@@ -12,11 +12,11 @@ public class School_VierKnoppen extends Applet {
     Button jongen;
     Button meisje;
     Button alles;
-    int mangetal = 15;
-    int vrouwgetal = 10;
-    int jongengetal = 5;
-    int meisjegetal = 1;
-    int allesgetal = mangetal + vrouwgetal + jongengetal + meisjegetal;
+    int mangetal;
+    int vrouwgetal;
+    int jongengetal;
+    int meisjegetal;
+    int allesgetal;
 
     public void init() {
 
@@ -24,7 +24,6 @@ public class School_VierKnoppen extends Applet {
         vrouw = new Button("Vrouw");
         jongen = new Button("Jongen");
         meisje = new Button("Meisje");
-        alles = new Button("Alles");
 
         tekstvak = new TextField("", 20);
 
@@ -40,14 +39,10 @@ public class School_VierKnoppen extends Applet {
         MeisjeListener meisjelistener = new MeisjeListener();
         meisje.addActionListener(meisjelistener);
 
-        AllesListener alleslistener = new AllesListener();
-        alles.addActionListener(alleslistener);
-
         add(man);
         add(vrouw);
         add(jongen);
         add(meisje);
-        add(alles);
         add(tekstvak);
         repaint();
     }
@@ -55,6 +50,8 @@ public class School_VierKnoppen extends Applet {
     class ManListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             man.equals(mangetal);
+            mangetal +=1;
+            allesgetal += 1;
             System.out.print("" + mangetal);
             repaint();
         }
@@ -63,6 +60,8 @@ public class School_VierKnoppen extends Applet {
     class VrouwListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             vrouw.equals(vrouwgetal);
+            vrouwgetal+=1;
+            allesgetal+=1;
             System.out.print("" + vrouwgetal);
             repaint();
         }
@@ -71,6 +70,8 @@ public class School_VierKnoppen extends Applet {
     class MeisjeListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             meisje.equals(meisjegetal);
+            meisjegetal+=1;
+            allesgetal+=1;
             System.out.print("" + meisjegetal);
             repaint();
         }
@@ -79,20 +80,18 @@ public class School_VierKnoppen extends Applet {
     class JongenListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             jongen.equals(jongengetal);
+            jongengetal+=1;
+            allesgetal+=1;
             System.out.print("" + jongengetal);
             repaint();
         }
     }
 
-    class AllesListener implements  ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            alles.equals(allesgetal);
-            System.out.print("" + allesgetal);
-            repaint();
-        }
-
-        public void paint(Graphics g) {
-            g.drawString("" + allesgetal, 50,50);
-        }
+    public void paint(Graphics g) {
+        g.drawString("Mannen:" + mangetal, 50,50);
+        g.drawString("Potentiele mannelijke leerlingen:" + jongengetal, 50,70);
+        g.drawString("Vrouwen:" + vrouwgetal, 50,90);
+        g.drawString("Potentiele vrouwelijke leerlingen:" + meisjegetal, 50,110);
+        g.drawString("Iedereen:" + allesgetal,50,130);
     }
 }
