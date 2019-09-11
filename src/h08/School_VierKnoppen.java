@@ -11,7 +11,6 @@ public class School_VierKnoppen extends Applet {
     Button vrouw;
     Button jongen;
     Button meisje;
-    Button alles;
     int mangetal;
     int vrouwgetal;
     int jongengetal;
