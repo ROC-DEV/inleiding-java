@@ -19,6 +19,8 @@ public class School_VierKnoppen extends Applet {
 
     public void init() {
 
+        // test
+
         man = new Button("Man");
         vrouw = new Button("Vrouw");
         jongen = new Button("Jongen");
