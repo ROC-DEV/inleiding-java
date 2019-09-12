@@ -5,8 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class School_VierKnoppen extends Applet {
-//    TextField tekstvak;
-    TextField tekstvak;
+
     Button man;
     Button vrouw;
     Button jongen;
@@ -19,14 +18,10 @@ public class School_VierKnoppen extends Applet {
 
     public void init() {
 
-        // test
-
         man = new Button("Man");
         vrouw = new Button("Vrouw");
         jongen = new Button("Jongen");
         meisje = new Button("Meisje");
-
-        tekstvak = new TextField("", 20);
 
         ManListener manlistener = new ManListener();
         man.addActionListener(manlistener);
@@ -44,7 +39,6 @@ public class School_VierKnoppen extends Applet {
         add(vrouw);
         add(jongen);
         add(meisje);
-        add(tekstvak);
         repaint();
     }
 
