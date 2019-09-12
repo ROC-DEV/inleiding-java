@@ -13,6 +13,7 @@ public class RekenMachine extends Applet {
     Button plus;
     Button min;
     TextField geschreven;
+    String geschrevenText;
     private boolean showText = false;
 
     public void init() {
@@ -51,7 +52,6 @@ public class RekenMachine extends Applet {
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String geschrevenText;
             geschrevenText = tekstvak.getText();
             geschreven.setText(geschrevenText);
         }
@@ -60,20 +60,19 @@ public class RekenMachine extends Applet {
     class KeerKnopListener implements  ActionListener
     {
         public void actionPerformed(ActionEvent e) {
-            tekstvak.setText("");
             geschreven.setText("");
         }
     }
 
     class PlusKnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+            geschreven.setText("");
         }
     }
 
     class MinKnopListener implements  ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+            geschreven.setText("");
         }
     }
 
