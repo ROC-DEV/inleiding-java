@@ -1,19 +1,23 @@
 package h08;
 
-import javax.swing.*;
+
 import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
 public class RekenMachine extends Applet {
     TextField tekstvak;
+    TextField geschreven;
     Label label;
     Button gedeelddoor;
     Button keer;
     Button plus;
     Button min;
-    TextField geschreven;
-    String geschrevenText;
+    String tekstvakcijfer;
+    String tekstvakcijfer2;
+    double getal1;
+    double getal2;
+    double antwoord;
     private boolean showText = false;
 
     public void init() {
@@ -50,29 +54,55 @@ public class RekenMachine extends Applet {
     //Eventhandler voor de ok knop
     class GedeelddoorKnopListener implements ActionListener
     {
-        @Override
         public void actionPerformed(ActionEvent e) {
-            geschrevenText = tekstvak.getText();
-            geschreven.setText(geschrevenText);
+            tekstvakcijfer = tekstvak.getText();
+            tekstvakcijfer2 = geschreven.getText();
+            getal1 = Double.parseDouble(tekstvakcijfer);
+            getal2 = Double.parseDouble(tekstvakcijfer2);
+            antwoord = getal1 / getal2;
+            tekstvak.setText("" + antwoord);
+            geschreven.setText("");
+            repaint();
         }
     }
 
     class KeerKnopListener implements  ActionListener
     {
         public void actionPerformed(ActionEvent e) {
+            tekstvakcijfer = tekstvak.getText();
+            tekstvakcijfer2 = geschreven.getText();
+            getal1 = Double.parseDouble(tekstvakcijfer);
+            getal2 = Double.parseDouble(tekstvakcijfer2);
+            antwoord = getal1 * getal2;
+            tekstvak.setText("" + antwoord);
             geschreven.setText("");
+            repaint();
         }
     }
 
     class PlusKnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            tekstvakcijfer = tekstvak.getText();
+            tekstvakcijfer2 = geschreven.getText();
+            getal1 = Double.parseDouble(tekstvakcijfer);
+            getal2 = Double.parseDouble(tekstvakcijfer2);
+            antwoord = getal1 + getal2;
+            tekstvak.setText("" + antwoord);
             geschreven.setText("");
+            repaint();
         }
     }
 
     class MinKnopListener implements  ActionListener {
         public void actionPerformed(ActionEvent e) {
+            tekstvakcijfer = tekstvak.getText();
+            tekstvakcijfer2 = geschreven.getText();
+            getal1 = Double.parseDouble(tekstvakcijfer);
+            getal2 = Double.parseDouble(tekstvakcijfer2);
+            antwoord = getal1 - getal2;
+            tekstvak.setText("" + antwoord);
             geschreven.setText("");
+            repaint();
         }
     }
 
