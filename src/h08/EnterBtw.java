@@ -10,7 +10,6 @@ public class EnterBtw extends Applet {
     Button okbutton;
     Button resetbutton;
     TextField geschreven;
-    private boolean showText = false;
 
     public void init() {
         tekstvak = new TextField("", 15);
@@ -39,13 +38,10 @@ public class EnterBtw extends Applet {
     class OkKnopListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {
-            double getal =  1;
-            double getal2 = getal *1.21;
+            double getal;
             String s = tekstvak.getText();
-            getal2 = Double.parseDouble( s );
-            String geschrevenText;
-            geschrevenText = "";
-            geschreven.setText(geschrevenText + getal2 * 1.21);
+            getal = Double.parseDouble( s );
+            geschreven.setText("" + getal * 1.21);
         }
     }
 
@@ -56,7 +52,4 @@ public class EnterBtw extends Applet {
             geschreven.setText("");
         }
     }
-
-
-
 }
