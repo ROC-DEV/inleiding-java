@@ -9,9 +9,9 @@ public class MaxNumber extends Applet {
     TextField tekstvak;
 //    TextField maxTekstvak;
 //    TextField minTekstvak;
-    double maxNumber = Integer.MAX_VALUE;
     double userInputNumber;
     String gettext = "";
+
 
     @Override
     public void init() {
@@ -29,21 +29,24 @@ public class MaxNumber extends Applet {
         add(tekstvak);
 //        add(minTekstvak);
 //        add(maxTekstvak);
-        gettext = tekstvak.getText();
+
         repaint();
     }
 
     class MaxGetalListener implements ActionListener {
+        double _hoogsteGetal = 0.0;
+
         public void actionPerformed(ActionEvent e) {
+            gettext = tekstvak.getText();
             userInputNumber = Double.parseDouble(gettext);
 
-            if (userInputNumber > maxNumber) {
-                getGraphics().drawString("" + userInputNumber,50,50);
+            if (userInputNumber > _hoogsteGetal) {
+                _hoogsteGetal = userInputNumber;
+                //getGraphics().drawString("" + userInputNumber,50,50);
 //                minTekstvak.setText("" + userInputNumber);
-            } else {
-                getGraphics().drawString("" + maxNumber,50,50);
-//                maxTekstvak.setText("" + maxNumber);
             }
+
+            System.out.print(_hoogsteGetal);
             repaint();
         }
     }
