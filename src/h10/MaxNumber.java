@@ -7,10 +7,10 @@ import java.awt.event.*;
 public class MaxNumber extends Applet {
 
     TextField tekstvak;
-//    TextField maxTekstvak;
-//    TextField minTekstvak;
     double userInputNumber;
     String gettext = "";
+    String tekst = "";
+    double _hoogsteGetal = 0.0;
 
 
     @Override
@@ -19,35 +19,31 @@ public class MaxNumber extends Applet {
 
         tekstvak = new TextField("", 20);
         tekstvak.addActionListener(new MaxNumber.MaxGetalListener());
-
-//        minTekstvak = new TextField("",20);
-//        minTekstvak.addActionListener(new MaxNumber.MaxGetalListener());
-//
-//        maxTekstvak = new TextField("",20);
-//        maxTekstvak.addActionListener(new MaxNumber.MaxGetalListener());
-
         add(tekstvak);
-//        add(minTekstvak);
-//        add(maxTekstvak);
-
         repaint();
     }
 
-    class MaxGetalListener implements ActionListener {
-        double _hoogsteGetal = 0.0;
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawString("" + _hoogsteGetal,50,50);
+    }
 
+    class MaxGetalListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             gettext = tekstvak.getText();
             userInputNumber = Double.parseDouble(gettext);
 
             if (userInputNumber > _hoogsteGetal) {
                 _hoogsteGetal = userInputNumber;
-                //getGraphics().drawString("" + userInputNumber,50,50);
-//                minTekstvak.setText("" + userInputNumber);
             }
-
             System.out.print(_hoogsteGetal);
             repaint();
         }
+
+        public void paint(Graphics g) {
+            g.drawString("" + _hoogsteGetal,200,200);
+        }
+
     }
 }
