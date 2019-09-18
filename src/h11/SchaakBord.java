@@ -17,125 +17,24 @@ public class SchaakBord extends Applet {
         breedte = 30;
         hoogte = 30;
 
-
-            for (int kolom = 0; kolom < 8; kolom++) {
-
-                if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(x, y, breedte, hoogte);
-                } else {
-                    g.setColor(Color.WHITE);
-                    g.fillRect(x, y, breedte, hoogte);
-
-                }
-                x += breedte;
-            }
-
-            x = 50;
-            y += hoogte;
-
-            for (int kolom = 0; kolom < 8; kolom++) {
-                if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                    g.setColor(Color.WHITE);
-                    g.fillRect(x, y, breedte, hoogte);
-                } else {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(x, y, breedte, hoogte);
-
-                }
-                x += breedte;
-            }
-
-        x = 50;
-        y += hoogte;
-
-        for (int kolom = 0; kolom < 8; kolom++) {
-
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
-
-            }
-            x += breedte;
+        for(int i=0;i<4;i++) {
+            Rij(g, Color.BLACK, Color.WHITE);
+            Rij(g, Color.WHITE, Color.BLACK);
         }
+    }
 
-        x = 50;
-        y += hoogte;
-
-        for (int kolom = 0; kolom < 8; kolom++) {
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-
-            }
-            x += breedte;
-        }
-
-        x = 50;
-        y += hoogte;
-
+    private void Rij(Graphics g, Color startkleur, Color tweedekleur) {
         for (int kolom = 0; kolom < 8; kolom++) {
 
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
+            Color kleur;
+            int oneven = kolom % 2;
+            if(oneven==0)
+                kleur = startkleur;
+            else
+                kleur = tweedekleur;
 
-            }
-            x += breedte;
-        }
-
-        x = 50;
-        y += hoogte;
-
-        for (int kolom = 0; kolom < 8; kolom++) {
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-
-            }
-            x += breedte;
-        }
-
-        x = 50;
-        y += hoogte;
-
-        for (int kolom = 0; kolom < 8; kolom++) {
-
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
-
-            }
-            x += breedte;
-        }
-
-        x = 50;
-        y += hoogte;
-
-        for (int kolom = 0; kolom < 8; kolom++) {
-            if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                g.setColor(Color.WHITE);
-                g.fillRect(x, y, breedte, hoogte);
-            } else {
-                g.setColor(Color.BLACK);
-                g.fillRect(x, y, breedte, hoogte);
-
-            }
+            g.setColor(kleur);
+            g.fillRect(x, y, breedte, hoogte);
             x += breedte;
         }
 
