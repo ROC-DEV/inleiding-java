@@ -1,57 +1,44 @@
 package h10;
 
-import java.applet.Applet;
-import java.awt.event.*;
+import java.applet.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Gemmidelde extends Applet {
-
     Label label;
     TextField tekstvak;
-    Button ok;
-//    Button reset;
-    double gemmidelde;
-    double getalinput;
-    double cijferinput;
-    String tekstvakTekst;
-    String s;
-    String tekst;
-    String uitslag;
+    Button knop, reset;
+    String s, tekst, uitslag;
+    double cijferinput, gemiddelde, getalinput;
     int teller;
 
-    @Override
     public void init() {
-        super.init();
-        label = new Label("Vul hier je cijfer in:");
-        ok = new Button("Uitslag");
-        ok.addActionListener(new OkButtonListener());
-//        reset = new Button("RESET");
-//        reset.addActionListener(new ResetListener());
-        tekstvak = new TextField(20);
-        tekstvak.addActionListener(new TekstVakListener());
-
-        tekst = "Nog geen getallen gedetecteerd.";
-        uitslag = "Nog niet berekend.";
+        label = new Label("Hier cijfers:");
+        tekstvak = new TextField("",15);
+        knop = new Button("Ok");
+        reset = new Button("Reset");
+        reset.addActionListener(new ResetListener());
+        knop.addActionListener(new KnopListener());
+        tekstvak.addActionListener(new TekstvakListener());
         cijferinput = 0;
-
+        tekst = "Geen getallen ingevuld.";
+        uitslag = "Niet berekend.";
         add(label);
         add(tekstvak);
-        add(ok);
-//        add(reset);
+        add(reset);
+        add(knop);
     }
 
-    @Override
     public void paint(Graphics g) {
-        super.paint(g);
-        g.drawString("Je gemmidelde is:"+gemmidelde,50,70);
-        g.drawString(tekst,50,55);
-        g.drawString(uitslag,50,90);
+        g.drawString("Gemiddelde is: "+gemiddelde,135,70);
+        g.drawString(tekst,135,55);
+        g.drawString(uitslag,135,90);
     }
-
-    class TekstVakListener implements ActionListener {
+    // Input Lezer
+    class TekstvakListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            tekstvakTekst = tekstvak.getText();
-            getalinput = Double.parseDouble(tekstvakTekst);
+            s = tekstvak.getText();
+            getalinput = Double.parseDouble(s);
             teller++;
             cijferinput += getalinput;
             if (getalinput >= 5.5) {
@@ -64,43 +51,36 @@ public class Gemmidelde extends Applet {
             repaint();
         }
     }
-
-    class OkButtonListener implements ActionListener {
+    // Uitslag
+    class KnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-//            tekstvakTekst = tekstvak.getText();
-//            gemmidelde = Double.parseDouble(tekstvakTekst);
-            gemmidelde = cijferinput/teller;
-            // Omrekenen naar 1 decimaal
-            gemmidelde *= 10;
-            gemmidelde = (int) gemmidelde;
-            gemmidelde /= 10;
+            gemiddelde = cijferinput/teller;
 
-            if ( gemmidelde > 5.4 ) {
-              s   = "Je hebt een voldoende.";
+            gemiddelde *= 10;
+            gemiddelde = (int) gemiddelde;
+            gemiddelde /= 10;
+
+            if (gemiddelde >= 5.5) {
+                uitslag = "Je bent geslaagd als een CHAMP.";
             }
             else {
-              s   = "Je hebt een onvoldoende.";
-
+                uitslag = "Je bent niet geslaagd als een LOSER.";
             }
             repaint();
         }
     }
+    // ResetKnop
+    class ResetListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            gemiddelde = 0.0;
+            teller = 0;
+            cijferinput = 0.0;
+            getalinput = 0.0;
+            tekstvak.getText();
+            tekstvak.setText("");
+            tekst = "Geen getallen ingevuld.";
+            uitslag = "Niet berekend.";
+            repaint();
+        }
+    }
 }
-
-//class ResetListener implements ActionListener {
-//    public void actionPerformed(ActionEvent e) {
-//        getClass(Gemmidelde);
-//        // Getallen Resetten
-//        gemiddelde = 0.0;
-//        teller = 0;
-//        cijferinput = 0.0;
-//        getalinput = 0.0;
-//        // Tekstvakken Resetten
-//        tekstvak.getText();
-//        tekstvak.setText("");
-//        // Strings Resetten
-//        tekst = "Nog geen getallen gedetecteerd.";
-//        uitslag = "Nog niet berekend.";
-//        repaint();
-//    }
-//}
