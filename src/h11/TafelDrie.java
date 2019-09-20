@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class TafelDrie extends Applet {
 
-    @Override
     public void paint(Graphics g) {
         super.paint(g);
         int teller;
