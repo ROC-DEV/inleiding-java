@@ -46,10 +46,8 @@ public class Vijftekstvakken extends Applet {
 
             // Getallen in juiste volgorde neerzetten
             for (int i = 0; i < tekstvak.length; i++) {
-                tekstvak[i].setText("");
-                getGraphics().drawString("" + getallen[i], 50, y);
+                tekstvak[i].setText("" + (getallen[i]));
                 y+=20;
-
             }
         }
     }

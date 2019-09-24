@@ -8,9 +8,7 @@ public class Tabel_Tien extends Applet {
     int[] getallen = new int[10];
     double totaal;
 
-    @Override
     public void paint(Graphics g) {
-        super.paint(g);
         int x = 50;
 
         for (int i = 0; i < getallen.length; i++) {
@@ -36,8 +34,5 @@ public class Tabel_Tien extends Applet {
             g.drawRect(x2,y2,20,20);
             x2 += 20;
         }
-
-
     }
-
 }
