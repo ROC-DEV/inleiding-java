@@ -21,7 +21,9 @@ public class Tabel_Tien extends Applet {
         totaal *= 10;
         totaal = (int)totaal;
         totaal /= 10;
+
         g.drawString("Gemmidelde:" + totaal,50,95);
+
         for (int i = 0; i < getallen.length; i++) {
             g.drawString(getallen[i] + "", x,70);
             x += 20;
