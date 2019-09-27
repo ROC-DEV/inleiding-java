@@ -7,26 +7,26 @@ import java.awt.event.ActionListener;
 
 public class IndexGetalWeergeven extends Applet {
 
-    TextField text;
-    Button but;
-    double[] num = {1,15,42,16,84,52,30,124,52,36,14,79,20,514,23,12,3,4,9,8,6};
-    double search, Num2;
-    int Num1, tel = 0, Num3;
-    boolean t;
+    private TextField text;
+    private Button button;
+    private double[] num = {1,15,42,16,84,52,30,124,52,36,14,79,20,514,23,12,3,4,9,8,6};
+    private double search, Num2;
+    private int Num1, tel = 0, Num3;
+    private boolean t;
 
     public void init() {
 
         text = new TextField("",20);
-        but = new Button("Ok");
-        but.addActionListener( new But1Listener() );
+        button = new Button("Ok");
+        button.addActionListener( new But1Listener() );
         t = false;
         add(text);
-        add(but);
+        add(button);
     }
 
     public void paint(Graphics g) {
 
-        if(t == true) {
+        if(t) {
             g.drawString("Waarde is gevonden "+Num2+" Index waarde is: "+Num3,20,50);
         }
         else {
