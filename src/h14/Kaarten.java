@@ -6,12 +6,11 @@ import java.awt.event.*;
 
 public class Kaarten extends Applet {
 
-    String[] getal;
-    String[] soort;
-    Button delen;
+    private String[] getal;
+    private String[] soort;
 
     public void init() {
-        delen = new Button("Deel kaart.");
+        Button delen = new Button("Deel kaart.");
         delen.addActionListener(new Delen());
 
         soort =  new String[4];
