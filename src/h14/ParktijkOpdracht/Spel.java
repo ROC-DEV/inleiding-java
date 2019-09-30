@@ -18,7 +18,6 @@ public class Spel extends Applet {
     private Button pak;
     private Label label;
     private BufferedImage afbeelding;
-    private int x = 50,y = 100;
 
     public void init() {
         tekstvak = new TextField("",20);
@@ -30,8 +29,6 @@ public class Spel extends Applet {
         //Afbeelding
         try {
              afbeelding = ImageIO.read(new File("C:\\Users\\liamv\\IdeaProjects\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
-
-            //afbeelding = ImageIO.read(getClass().getResourceAsStream("/knoppen.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -41,11 +38,11 @@ public class Spel extends Applet {
         add(label);
         add(tekstvak);
         add(pak);
-        repaint();
     }
 
     public void paint(Graphics g) {
         g.drawString("" + _knopen,50,50);
+        int x = 50,y = 100;
         if (_knopen >12) {
         for (int i = 0; i < _knopen; i++) {
             //draw image extra
@@ -59,16 +56,10 @@ public class Spel extends Applet {
             }
         }
 
-
         if(response == null)
             return;
 
         g.drawString(response,50,70);
-
-        //Afbeelding
-//        g.drawString(pad.toString(), 20, 10);
-//        g.drawImage(afbeelding, 20, 20, 400, 300, this);
-
     }
 
     class PakEvent implements ActionListener {
