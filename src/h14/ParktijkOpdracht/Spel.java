@@ -1,9 +1,14 @@
 package h14.ParktijkOpdracht;
 
+import javax.imageio.ImageIO;
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Spel extends Applet {
@@ -12,6 +17,8 @@ public class Spel extends Applet {
     private TextField tekstvak;
     private Button pak;
     private Label label;
+    private BufferedImage afbeelding;
+    private int x = 50,y = 100;
 
     public void init() {
         tekstvak = new TextField("",20);
@@ -19,6 +26,17 @@ public class Spel extends Applet {
         label = new Label("Vul 1,2 of 3 in.");
 
         pak.addActionListener(new PakEvent());
+
+        //Afbeelding
+        try {
+             afbeelding = ImageIO.read(new File("C:\\Users\\liamv\\IdeaProjects\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
+
+            //afbeelding = ImageIO.read(getClass().getResourceAsStream("/knoppen.png"));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+//        pad = Spel.class.getResource("/resources/");
+//        afbeelding = getImage(pad, "/knop.png");
 
         add(label);
         add(tekstvak);
@@ -28,11 +46,29 @@ public class Spel extends Applet {
 
     public void paint(Graphics g) {
         g.drawString("" + _knopen,50,50);
+        if (_knopen >12) {
+        for (int i = 0; i < _knopen; i++) {
+            //draw image extra
+            g.drawImage(afbeelding, x,y, 25,25, null);
+            y += 25;
+        } } else {
+            for (int i = 0; i < _knopen; i++) {
+                x = 100;
+                g.drawImage(afbeelding, x,y, 25,25, null);
+                y += 25;
+            }
+        }
+
 
         if(response == null)
             return;
 
         g.drawString(response,50,70);
+
+        //Afbeelding
+//        g.drawString(pad.toString(), 20, 10);
+//        g.drawImage(afbeelding, 20, 20, 400, 300, this);
+
     }
 
     class PakEvent implements ActionListener {
