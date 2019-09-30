@@ -27,8 +27,12 @@ public class Spel extends Applet {
     }
 
     public void paint(Graphics g) {
-    g.drawString("" + _knopen,50,50);
-    g.drawString(response,50,70);
+        g.drawString("" + _knopen,50,50);
+
+        if(response == null)
+            return;
+
+        g.drawString(response,50,70);
     }
 
     class PakEvent implements ActionListener {
@@ -38,77 +42,76 @@ public class Spel extends Applet {
         {
             switch (_knopen) {
                 case 1:
-                    _knopen =- 1;
+                    _knopen =_knopen - 1;
                     break;
                 case 2:
-                    _knopen =- 1;
+                    _knopen =_knopen - 1;
                     break;
                 case 3:
-                    _knopen =- 2;
+                    _knopen =_knopen - 2;
                     break;
                 case 4:
-                    _knopen =- 3;
+                    _knopen =_knopen - 3;
                     break;
                 case 5:
-                    _knopen =- 1;
+                    _knopen = _knopen - 1;
                     break;
                 case 6:
-                    _knopen =- 2;
+                    _knopen = _knopen - 2;
                     break;
                 case 7:
-                    _knopen =- 3;
+                    _knopen = _knopen - 3;
                     break;
                 default:
                     int verwijdermij =(int) (Math.random() * 3 + 1);
-                    _knopen =- verwijdermij;
+                    _knopen = _knopen - verwijdermij;
                     break;
             }
+        }
+
+        public boolean isNumeric(String strNum) {
+            try {
+                int d = Integer.parseInt(strNum);
+            } catch (NumberFormatException | NullPointerException nfe) {
+                return false;
+            }
+            return true;
         }
 
         //Hier druk de mens op de knop en verwijderd de stenen
         public void actionPerformed(ActionEvent e) {
-            String s = tekstvak.getText();
-            int itemsverwijderen = Integer.parseInt(s);
-            _knopen = _knopen - itemsverwijderen;
-
-//            if (itemsverwijderen > 0 && itemsverwijderen < 4) {
-////                _knopen = (_knopen - itemsverwijderen);
-////            }
-
-            if (s.equals(String.valueOf(1)) || s.equals(String.valueOf(2)) || s.equals(String.valueOf(3))) {
-                _knopen -= itemsverwijderen;
+            boolean success = GebruikersAction();
+            if(success) {
                 ComputerAction();
             }
-            else if (s.equals("")) {
-                response = "Voer een getal in.";
-            }
-            else {
-                response = "Onjuist getal ingevoerd";
-            }
-            if (_knopen <= 0) {
-                System.out.print("You lose!");
-            } else if (_knopen == 1) {
-                System.out.print("You win!");
-            }
-            tekstvak.setText("");
-            repaint();
-            Sleep();
-            ComputerAction();
             repaint();
         }
 
-        public void Sleep()  {
-            try {
-                TimeUnit.SECONDS.sleep(5);
+        private boolean GebruikersAction() {
+            //Haal de gebruikers input op uit het tekstvak
+            String s = tekstvak.getText();
+            //als de waarde van de tekst leeg is dan hebben we niets te doen.
+            if (s.isEmpty() || !isNumeric(s)){
+                response = "Voer een getal in";
+                return false;
             }
-            catch(InterruptedException e)
+            //Converteer naar int
+            int itemsverwijderen = Integer.parseInt(s);
+
+            //als de waarde van de tekst anders is dan 1,2 of drie dan hebben we ook niets te doen.
+            if(itemsverwijderen<0 || itemsverwijderen>3)
             {
-                // There was no error ever here to begin with.
+                response = "Voer een getal in 1,2 of 3";
+                return false;
             }
+
+            //Verminder het totaal aantal met de hoeveelheid die de gebruiker verwijderd heeft.
+            _knopen = _knopen - itemsverwijderen;
+
+            response = "";
+            //Gebruikers actie is gelukt Laat de computer aan de beurt
+            tekstvak.setText("");
+            return true;
         }
     }
 }
-
-//  if (aantalvlagenspeler > 0 && aantalvlagenspeler < 4) {
-//        aantalvlagen = (aantalvlagen - aantalvlagenspeler);
-//        }
