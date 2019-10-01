@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class Spel extends Applet {
     private int _knopen = 23;
@@ -18,8 +16,10 @@ public class Spel extends Applet {
     private Button pak;
     private Label label;
     private BufferedImage afbeelding;
+    private int verwijdermij;
 
     public void init() {
+        setSize(300,700);
         tekstvak = new TextField("",20);
         pak = new Button("Pak");
         label = new Label("Vul 1,2 of 3 in.");
@@ -28,12 +28,10 @@ public class Spel extends Applet {
 
         //Afbeelding
         try {
-             afbeelding = ImageIO.read(new File("C:\\Users\\liamv\\IdeaProjects\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
+             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
         } catch(IOException e) {
             e.printStackTrace();
         }
-//        pad = Spel.class.getResource("/resources/");
-//        afbeelding = getImage(pad, "/knop.png");
 
         add(label);
         add(tekstvak);
@@ -42,6 +40,7 @@ public class Spel extends Applet {
 
     public void paint(Graphics g) {
         g.drawString("" + _knopen,50,50);
+        g.drawString("De computer verwijderde:" + verwijdermij,50,70);
         int x = 50,y = 100;
         if (_knopen >12) {
         for (int i = 0; i < _knopen; i++) {
@@ -59,7 +58,7 @@ public class Spel extends Applet {
         if(response == null)
             return;
 
-        g.drawString(response,50,70);
+        g.drawString(response,50,90);
     }
 
     class PakEvent implements ActionListener {
@@ -69,28 +68,35 @@ public class Spel extends Applet {
         {
             switch (_knopen) {
                 case 1:
+                    verwijdermij = 1;
                     _knopen =_knopen - 1;
                     break;
                 case 2:
+                    verwijdermij = 1;
                     _knopen =_knopen - 1;
                     break;
                 case 3:
+                    verwijdermij = 2;
                     _knopen =_knopen - 2;
                     break;
                 case 4:
+                    verwijdermij = 3;
                     _knopen =_knopen - 3;
                     break;
                 case 5:
+                    verwijdermij = 1;
                     _knopen = _knopen - 1;
                     break;
                 case 6:
+                    verwijdermij = 2;
                     _knopen = _knopen - 2;
                     break;
                 case 7:
+                    verwijdermij = 3;
                     _knopen = _knopen - 3;
                     break;
                 default:
-                    int verwijdermij =(int) (Math.random() * 3 + 1);
+                    verwijdermij =(int) (Math.random() * 3 + 1);
                     _knopen = _knopen - verwijdermij;
                     break;
             }
