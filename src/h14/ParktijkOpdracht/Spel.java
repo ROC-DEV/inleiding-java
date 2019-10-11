@@ -29,9 +29,9 @@ public class Spel extends Applet {
 
         //Afbeelding
         try {
-             afbeelding = ImageIO.read(new File("E:\\Program Files (x86)\\School\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
-             youwin = ImageIO.read(new File("E:\\Program Files (x86)\\School\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouWin.jpg"));
-            youlose = ImageIO.read(new File("E:\\Program Files (x86)\\School\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouLose.png"));
+             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
+             youwin = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouWin.jpg"));
+            youlose = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouLose.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
