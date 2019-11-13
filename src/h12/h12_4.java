@@ -1,37 +1,34 @@
 package h12;
 
-
-
-import java.applet.Applet;
 import java.awt.*;
+import java.applet.*;
 import java.awt.event.*;
-import java.util.*;
 
-public class h12_1 extends Applet {
+public class h12_4 extends Applet{
+    boolean gevonden;
     TextField tekstvak;
     Button knop;
     String s;
-    int [] getal;
-    int search;
+    String s2;
+    int[] getal;
+    int zoeken;
+    int aantal;
 
     public void init() {
-        getal= new int[20];
-        tekstvak= new TextField("",5);
+        getal = new int[20];
+        tekstvak = new TextField("", 5);
         tekstvak.addActionListener(new OkknopListener());
-        knop= new Button("OK");
+        knop = new Button("OK");
         knop.addActionListener(new OkknopListener());
-        s= "";
+        s = "";
         add(tekstvak);
         add(knop);
-        search = 0;
+        zoeken = 0;
 
-        for (int i= 0; i < getal.length; i++) {
-            getal[i]= (int)(Math.random()*10+1);
+        for (int i = 0; i < getal.length; i++) {
+            getal[i] = (int)(Math.random() * 10 + 1);
         }
-
-
     }
-
     public void paint(Graphics g) {
         int y = 50;
 
@@ -40,25 +37,24 @@ public class h12_1 extends Applet {
             y += 15;
         }
         g.drawString(s, 150, 80);
+        g.drawString("De waarde komt " + aantal + "x voor", 150, 100);
     }
     class OkknopListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             boolean gevonden = false;
-            search = Integer.parseInt(tekstvak.getText());
+            zoeken = Integer.parseInt(tekstvak.getText());
             for (int i = 0; i < getal.length; i++) {
-                if (getal[i] == search){
+                if (getal[i] == zoeken){
                     gevonden =  true;
-                    s = "De waarde is gevonden" + "  index: " + i;
-//   De break; comment hoort bij opdracht 12.5
-                    break;
+                    aantal++;
+                    s = getal[i] + " gevonden";
+                    s2 = "De waarde komt " + aantal + "x voor";
                 }
                 if (!gevonden){
-                    s = search + " is niet gevonden";
+                    s = zoeken + " is niet gevonden";
                 }
             }
             repaint();
         }
     }
-
-
 }
