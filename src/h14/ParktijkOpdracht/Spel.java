@@ -3,6 +3,7 @@ package h14.ParktijkOpdracht;
 import javax.imageio.ImageIO;
 import java.applet.Applet;
 import java.awt.*;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -15,26 +16,35 @@ public class Spel extends Applet {
     private TextField tekstvak;
     private Button pak;
     private Label label;
-    private BufferedImage afbeelding, youwin, youlose;
+    // was bufferedImage
+    private Image afbeelding, youwin, youlose;
+    private URL pad;
     private int verwijdermij;
     private boolean playerwin, computerwin;
 
     public void init() {
-        setSize(700,700);
-        tekstvak = new TextField("",20);
+        setSize(700, 700);
+        tekstvak = new TextField("", 20);
         pak = new Button("Pak");
         label = new Label("Vul 1,2 of 3 in.");
 
         pak.addActionListener(new PakEvent());
 
         //Afbeelding
+
+        /*pad = Spel.class.getResource("/resource/");
+        afbeelding = getImage(pad, "knoppen.jpg");
+        youwin = getImage(pad, "YouWin.jpg");
+        youlose = getImage(pad, "YouLose.jpg");*/
+
         try {
-             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\knoppen.jpg"));
-             youwin = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouWin.jpg"));
-            youlose = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\YouLose.png"));
+             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\knoppen.jpg"));
+             youwin = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouWin.jpg"));
+            youlose = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouLose.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
+
 
         add(label);
         add(tekstvak);
@@ -67,13 +77,13 @@ public class Spel extends Applet {
             if (_knopen > 12) {
                 for (int i = 0; i < _knopen; i++) {
                     //draw image extra
-                    g.drawImage(afbeelding, x, y, 25, 25, null);
+                    g.drawImage(afbeelding, x, y, 25, 25, this);
                     y += 25;
                 }
             } else {
                 for (int i = 0; i < _knopen; i++) {
                     x = 100;
-                    g.drawImage(afbeelding, x, y, 25, 25, null);
+                    g.drawImage(afbeelding, x, y, 25, 25, this);
                     y += 25;
                 }
             }
@@ -87,34 +97,35 @@ public class Spel extends Applet {
 
 
     private void youWin(Graphics g) {
-        g.drawImage(youwin, 250,250, 250,250, null);
+        // observer was null
+        g.drawImage(youwin, 250, 250, 250, 250, null);
     }
 
     private void youLose(Graphics g) {
-        g.drawImage(youlose, 250,250, 250,250, null);
+        // observer was null
+        g.drawImage(youlose, 250, 250, 250, 250, null);
     }
 
     class PakEvent implements ActionListener {
 
         // Hier verwijderd de computer zijn stenen
-        public void ComputerAction()
-        {
+        public void ComputerAction() {
             switch (_knopen) {
                 case 1:
                     verwijdermij = 1;
-                    _knopen =_knopen - 1;
+                    _knopen = _knopen - 1;
                     break;
                 case 2:
                     verwijdermij = 1;
-                    _knopen =_knopen - 1;
+                    _knopen = _knopen - 1;
                     break;
                 case 3:
                     verwijdermij = 2;
-                    _knopen =_knopen - 2;
+                    _knopen = _knopen - 2;
                     break;
                 case 4:
                     verwijdermij = 3;
-                    _knopen =_knopen - 3;
+                    _knopen = _knopen - 3;
                     break;
                 case 6:
                     verwijdermij = 2;
@@ -125,7 +136,7 @@ public class Spel extends Applet {
                     _knopen = _knopen - 2;
                     break;
                 default:
-                    verwijdermij =(int) (Math.random() * 3 + 1);
+                    verwijdermij = (int) (Math.random() * 3 + 1);
                     _knopen = _knopen - verwijdermij;
                     break;
             }
@@ -144,15 +155,14 @@ public class Spel extends Applet {
         public void actionPerformed(ActionEvent e) {
             boolean successful = GebruikersAction();
             //if gebruiker een actie heeft uitgevoerd die niet correct is bijvoorbeeld 4 ingevoerd.
-            if(!successful)
-            {
+            if (!successful) {
                 repaint();
                 return;
             }
 
             //Hier aangekomen betekend dat de gebruiker een correcte actie heeft uitgevoerd.
             boolean verdergaan = true;
-            if(_knopen == 1) {
+            if (_knopen == 1) {
                 playerwin = true;
                 verdergaan = false;
             } else if (_knopen == 0) {
@@ -160,7 +170,7 @@ public class Spel extends Applet {
                 verdergaan = false;
             }
 
-            if(verdergaan) {
+            if (verdergaan) {
                 ComputerAction();
             }
             repaint();
@@ -168,6 +178,7 @@ public class Spel extends Applet {
 
         /**
          * Voert de gebruikers actie uit, dus verwijderd een of meerdere knopen.
+         *
          * @return true if Gebruikers actie is goed afgerond. Dus de gebruiker heeft een getal ingevoerd, dat getal ligt tussen de 1 en 3 en is nooit groter dan de hoeveelheid overgebleven knopen.
          * In alle andere gevallen geeft hij false terug.
          */
@@ -175,7 +186,7 @@ public class Spel extends Applet {
             //Haal de gebruikers input op uit het tekstvak
             String s = tekstvak.getText();
             //als de waarde van de tekst leeg is dan hebben we niets te doen.
-            if (s.isEmpty() || !isNumeric(s)){
+            if (s.isEmpty() || !isNumeric(s)) {
                 response = "Voer een getal in";
                 return false;
             }
@@ -183,13 +194,12 @@ public class Spel extends Applet {
             int itemsverwijderen = Integer.parseInt(s);
 
             //als de waarde van de tekst anders is dan 1,2 of drie dan hebben we ook niets te doen.
-            if(itemsverwijderen<1 || itemsverwijderen>3)
-            {
+            if (itemsverwijderen < 1 || itemsverwijderen > 3) {
                 response = "Voer een getal in 1,2 of 3";
                 return false;
             }
 
-            if(itemsverwijderen > _knopen) {
+            if (itemsverwijderen > _knopen) {
                 response = "Getal moet kleiner of gelijk zijn aan het aantal knopen";
                 return false;
             }
