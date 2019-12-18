@@ -32,18 +32,18 @@ public class Spel extends Applet {
 
         //Afbeelding
 
-        /*pad = Spel.class.getResource("/resource/");
+        pad = Spel.class.getResource("./resource/");
         afbeelding = getImage(pad, "knoppen.jpg");
         youwin = getImage(pad, "YouWin.jpg");
-        youlose = getImage(pad, "YouLose.jpg");*/
+        youlose = getImage(pad, "YouLose.jpg");
 
-        try {
-             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\knoppen.jpg"));
-             youwin = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouWin.jpg"));
-            youlose = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouLose.png"));
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//             afbeelding = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\knoppen.jpg"));
+//             youwin = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouWin.jpg"));
+//            youlose = ImageIO.read(new File("D:\\Program Files (x86)\\School\\Github Repository's\\inleiding-java-Liam.S\\src\\h14\\ParktijkOpdracht\\resource\\YouLose.png"));
+//        } catch(IOException e) {
+//            e.printStackTrace();
+//        }
 
 
         add(label);
