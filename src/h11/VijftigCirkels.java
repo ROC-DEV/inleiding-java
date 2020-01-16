@@ -5,6 +5,10 @@ import java.awt.*;
 
 public class VijftigCirkels extends Applet {
 
+    public void init() {
+        setSize(1200, 1200);
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -20,7 +24,5 @@ public class VijftigCirkels extends Applet {
             y+=-7;
             x+=-7;
         }
-
     }
-
 }
