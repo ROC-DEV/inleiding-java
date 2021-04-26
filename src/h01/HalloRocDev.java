@@ -6,6 +6,12 @@ package h01;
 public class HalloRocDev {
 
     public static void main(String[] args) {
-        System.out.println("Hallo klas 8A!");
+        System.out.println("Ik heb de code veranderd. Ik heb het nog een keer online veranderd op de Github site.");
     }
 }
+
+/**
+ * Done by Liam van Slingerlandt
+ */
+
+
